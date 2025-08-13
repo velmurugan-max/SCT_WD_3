@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style type="text/css" media="all">
+       /*CSS*/
+
+.button
+{
+    text-align: center;
+    height: 75px;
+    width: 80px;
+    border:3px solid black;
+    margin: 0px -5px;
+    text-align: center;
+    font-size: 40px;
+    
+}
+#btn{
+    background-color: #FFACFF;
+    text-align: center;
+    margin: 10px;
+}
+
+h1{
+    text-shadow:  1px 2px rgb(0,0,0,0.4);
+   color: #F7D400;
+   text-align: center;
+   
+}
+
+p{
+    border: 2px solid #EC88FE;
+    padding-block: 10px;
+    width:100px;
+    margin-top:5px;
+} 
+    </style>
+</head>
+<body>
+<h1 id="h">Tic-Tac Game</h1>
+
+<div id="btn">
+    
+<br />
+<button class="button" onclick="tac(event)">1</button>
+<button class="button" onclick="tac(event)">2</button>
+<button class="button" onclick="tac(event)">3</button>
+<br/>
+
+<button class="button" onclick="tac(event)">4</button>
+<button class="button" onclick="tac(event)">5</button>
+<button class="button" onclick="tac(event)">6</button>
+
+<br/>
+<button class="button" onclick="tac(event)">7</button>
+<button class="button" onclick="tac(event)">8</button>
+<button class="button" onclick="tac(event)">9</button>
+<br/>
+<br />
+</div>
+
+<div style="display:none">
+    
+<label for="choice1" style="font-weight:bold;">
+    Player 1 Choices: 
+    <p id="choice1"></p>
+    
+<label for="choice2" style="font-weight:bold;">
+    Player 2 Choices: 
+    <p id="choice2"></p>
+
+
+<button type="submit" onclick="choice()" id="sub">Submit</button>
+</div>
+
+<script>
+       //JavaScript
+
+
+var ch1=document.getElementById("choice1")
+var ch2=document.getElementById("choice2")
+let a = ["O", "X", "O", "X", "O", "X", "O", "X", "O", "X", "O", "X"];
+
+function choice1(){
+    var a=document.getElementById("c1")
+    b=a.textContent
+    c=[]
+    c[0]=b
+    if(b=="O"){
+        c[1]="X"
+    }
+        
+    else {
+        c[1]="O"
+    }
+}
+function tac(event){
+    var ch1=document.getElementById("choice1")
+    ch1.append(event.target.textContent+"")
+    event.target.textContent=a[0];
+    a.shift()
+    ch2.append(event.target.textContent)
+    var totVal=ch1.textContent
+    var ply1="",ply2="";
+    
+    
+    for(let j=0;j<totVal.length;j++)
+    {
+        if(j%2==0)
+        {
+            ply1+=totVal[j];
+        }
+        else
+        {
+            ply2+=totVal[j];
+        }
+
+    
+    check1(ply1,"Player 1");
+    check1(ply2,"Player 2");
+    }
+    
+}
+
+function check1(ply,name){
+    const winList= [
+  "123", "132", "213", "231", "312", "321",
+  "456", "465", "546", "564", "645", "654",
+  "789", "798", "879", "897", "978", "987",
+  "147", "174", "417", "471", "741", "714",
+  "258", "285", "528", "582", "825", "852",
+  "369", "396", "639", "693", "936", "963",
+  "159", "195", "519", "591", "915", "951",
+  "357", "375", "537", "573", "735", "753"
+];
+
+let a =ply;
+    let v = a;
+    let res = false;
+    let l = winList;
+
+    for (let i = 0; i < l.length; i++) {
+        for (let j = 0; j < 3; j++) {
+            let k = l[i][j];
+            if (v.includes(k)) {
+                res = true;
+                } else {
+                res = false;
+                break;
+          }           
+      }
+        if(res){
+          break;
+       }
+    }
+    if(res){
+        alert(name+" Won!!!");
+    }
+    if(a.length==5 && !res){
+        alert("Match Draw");
+    }
+}
+
+</script>
+
+</body>
+</html>
