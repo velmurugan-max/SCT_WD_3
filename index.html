@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome Page</title>
+    <title>Tic-Tac-Toe</title>
     <style type="text/css" media="all">
        /*CSS*/
 
 .button
 {
-    text-align: center;
+
     height: 75px;
     width: 80px;
     border:3px solid black;
@@ -22,6 +22,16 @@
     background-color: #FFACFF;
     text-align: center;
     margin: 10px;
+}
+
+#rst{
+    text-align: center;
+    background-color: rgb(255,172,255);
+    border: solid 1px black;
+    padding: 8px 20px;
+    font-weight: 500;
+
+    
 }
 
 h1{
@@ -40,24 +50,22 @@ p{
     </style>
 </head>
 <body>
-<h1 id="h">Tic-Tac Game</h1>
+<h1 id="h">Tic-Tac-Toe Game</h1>
 
 <div id="btn">
     
 <br />
-<button class="button" onclick="tac(event)">1</button>
-<button class="button" onclick="tac(event)">2</button>
-<button class="button" onclick="tac(event)">3</button>
-<br/>
-
-<button class="button" onclick="tac(event)">4</button>
-<button class="button" onclick="tac(event)">5</button>
-<button class="button" onclick="tac(event)">6</button>
-
-<br/>
-<button class="button" onclick="tac(event)">7</button>
-<button class="button" onclick="tac(event)">8</button>
-<button class="button" onclick="tac(event)">9</button>
+<button class="button" onclick="tac(event)" id="btn1" >1</button>
+<button class="button" onclick="tac(event)" id="btn2" >2</button>
+<button class="button" onclick="tac(event)" id="btn3" >3</button>
+<br />
+<button class="button" onclick="tac(event)" id="btn4" >4</button>
+<button class="button" onclick="tac(event)" id="btn5" >5</button>
+<button class="button" onclick="tac(event)" id="btn6" >6</button>
+<br>
+<button class="button" onclick="tac(event)" id="btn7" >7</button>
+<button class="button" onclick="tac(event)" id="btn8" >8</button>
+<button class="button" onclick="tac(event)" id="btn9" >9</button>
 <br/>
 <br />
 </div>
@@ -75,6 +83,10 @@ p{
 
 <button type="submit" onclick="choice()" id="sub">Submit</button>
 </div>
+
+<center>
+    <button id="rst" onclick="reset1()">Reset</button>
+</center>
 
 <script>
        //JavaScript
@@ -162,6 +174,22 @@ let a =ply;
     if(a.length==5 && !res){
         alert("Match Draw");
     }
+}
+function reset1() {
+    for (let i = 1; i < 10; i++) {
+        let b = "btn" + i;   // no str()
+        let a = document.getElementById(b);
+        if (a) {
+            a.textContent = i;
+        }
+    }
+        var ch1=document.getElementById("choice1");
+        var  ch2=document.getElementById("choice2");
+        ch1.textContent="";
+        ch2.textContent="";
+        a = ["O", "X", "O", "X", "O", "X", "O", "X", "O", "X", "O", "X"];
+    
+    
 }
 
 </script>
